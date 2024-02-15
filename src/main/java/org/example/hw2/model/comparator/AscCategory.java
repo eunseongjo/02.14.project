@@ -5,16 +5,9 @@ import org.example.test.model.dto.BookDTO;
 
 import java.util.Comparator;
 
-public class AscCategory implements Comparator<BookDTO> {
+public class AscCategory  {
 BookManager bookManager = new BookManager();
 
-bookList.sort(new Comparator<BookDTO>){}
-    public int compare(BookDTO o1, BookDTO o2){
-        for(BookDTO bookDTO : bookList){
-            System.out.println(bookDTO);
-
-        }
-        return 0;
-    }
 
 }
+

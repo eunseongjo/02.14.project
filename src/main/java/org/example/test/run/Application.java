@@ -8,8 +8,7 @@ public class Application {
         BookMenu bookMenu = new BookMenu();
 
         bookMenu.menu();
-        bookMenu.inputBook();
-        bookMenu.inputBookTitle();
+
 
 
     }

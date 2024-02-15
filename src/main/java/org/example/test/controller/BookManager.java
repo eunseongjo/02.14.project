@@ -2,49 +2,92 @@ package org.example.test.controller;
 
 import org.example.test.model.dto.BookDTO;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class BookManager {
-Scanner sc = new Scanner(System.in);
+    ArrayList<BookDTO> bookList;
 
-    public BookManager(){
-        ArrayList<BookDTO> bookList = new ArrayList<>();
-        bookList.add(new BookDTO(1,1, "인문의 길", "허균"));
-        bookList.add(new BookDTO(2,2, "자연과학의 정석", "허균"));
-        bookList.add(new BookDTO(3,3, "의료란 무엇인가", "허균"));
-        bookList.add(new BookDTO(4,4, "기타치는 법", "허균"));
-        bookList.add(new BookDTO(5,1, "인문에 입문", "허균"));
+    public BookManager() {
+        bookList = new ArrayList<>();
+        bookList.add(new BookDTO(1, 1, "인문의 길", "허균"));
+        bookList.add(new BookDTO(2, 2, "자연과학의 정석", "허균"));
+        bookList.add(new BookDTO(3, 3, "의료란 무엇인가", "허균"));
+        bookList.add(new BookDTO(4, 4, "기타치는 법", "허균"));
+        bookList.add(new BookDTO(5, 1, "인문에 입문", "허균"));
+
+    }
+
+    public void addBook(BookDTO bookList) {
+        this.bookList.add(bookList);
+        System.out.println(bookList+"이라는 책이 추가되었습니다.");
+    }
+
+    public void deleteBook(int index) {
+        Iterator<BookDTO> iterator = bookList.iterator();
+        while (iterator.hasNext()) {
+            BookDTO book = iterator.next();
+            if (book.getbNo() == index) {
+                iterator.remove();
+                System.out.println("도서가 삭제되었습니다.");
+                return;
+            }
+        }
+        System.out.println("해당 도서 번호를 가진 책을 찾을 수 없습니다.");
+    }
+
+    public int searchBook(String title) {
+        return 0;
+    }
+
+
+    public void printBook(int index) {
+
+        if (index >= 0 && index < bookList.size()) {
+            BookDTO book = bookList.get(index);
+            System.out.println("카테고리 번호 : " + book.getCategory());
+            System.out.println("제목 : " + book.getTitle());
+            System.out.println("저자 : " + book.getAuthor());
+
+        } else {
+            System.out.println("해당 인덱스에 도서 정보가 존재하지 않습니다.");
+        }
 
     }
 
-    public void addBook(BookDTO bookList){
-        System.out.println("도서번호 : ");
-        int bookNumber = sc.nextInt();
+    public void displayAll() {
+        if (bookList.isEmpty()) {
+            System.out.println("도서 목록이 비어 있습니다.");
+            return;
+        }
+
+        System.out.println("도서 목록 : ");
+        for (BookDTO book : bookList) {
+            System.out.println(book);
+        }
 
     }
-    public void deleteBook(int index){
-        System.out.println("도서 번호 : ");
-        int bookNumber = sc.nextInt();
 
-//        ArrayList 객체에 삭제
-
-    }
-    public int searchBook(String title){
+    public ArrayList<BookDTO> sortedBookList(int select) {
 
 
-    }
-    public void printBook(int index){
+        Collections.sort(bookList, new Comparator<BookDTO>() {
+            @Override
+            public int compare(BookDTO book1, BookDTO book2) {
+                return book1.getCategory() - book2.getCategory();
+            }
+        });
 
-    }
-    public ArrayList<BookDTO> displayAll(){
-        return
+        return bookList;
 
     }
-    public ArrayList<BookDTO> sortedBookList(int select){
 
-    }
-    public void printBookList(ArrayList<BookDTO> br){
+    public void printBookList(ArrayList<BookDTO> br) {
+        br = bookList;
+        for (BookDTO book : br) {
+            System.out.println(bookList);
 
+        }
     }
+
 }
+

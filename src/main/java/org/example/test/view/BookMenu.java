@@ -22,7 +22,8 @@ public class BookMenu {
             System.out.println("3. 도서 검색");
             System.out.println("4. 도서 정보 출력");
             System.out.println("5. 도서목록 전체 출력");
-            System.out.println("6. 도서 정보 출력");
+            System.out.println("6. 해당 카테고리순으로 정렬");
+            System.out.println("7. 향상된 for문을 이용하여 출력(?)");
 
             System.out.print("메뉴를 선택하세요: ");
 
@@ -31,40 +32,55 @@ public class BookMenu {
             switch (choice1) {
 
                 case 1:
-                    bm.addBook();
+                    bm.addBook(inputBook());
                     break;
                 case 2:
-                    bm.deleteBook();
+
                     break;
                 case 3:
-                    bm.printBook();
+
+                    break;
                 case 4:
-                    while(true){
-                        System.out.println("1. 도서 목록 전체 출력");
-                        System.out.println("2. 카테고리순으로 정렬해서 출력");
 
-                        int choice2 = sc.nextInt();
+                    break;
+                case 5:
 
-                        switch (choice2){
-                            case 1:
+                    break;
+                case 6:
 
-                        }
-                    }
+                    break;
+                case 7:
+
+                    break;
 
 
             }
-
         }
-
 
     }
 
+
     public BookDTO inputBook() {
-        return null;
+
+        System.out.println("책 번호 : ");
+        int bNo = sc.nextInt();
+        System.out.println("카테고리 번호 : ");
+        int categoryNumber = sc.nextInt();
+        System.out.println("책 제목 : ");
+        String bookTitle = sc.next();
+        System.out.println("저자 : ");
+        String bookAuthor = sc.next();
+
+        BookDTO newBook = new BookDTO(bNo,categoryNumber, bookTitle, bookAuthor);
+
+        return newBook;
     }
 
     public String inputBookTitle() {
 
-        return null;
+        System.out.println("도서 제목 : ");
+        String bookTitle = sc.next();
+
+        return bookTitle;
     }
 }
