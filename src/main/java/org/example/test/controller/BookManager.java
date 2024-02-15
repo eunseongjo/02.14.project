@@ -19,7 +19,7 @@ public class BookManager {
 
     public void addBook(BookDTO bookList) {
         this.bookList.add(bookList);
-        System.out.println(bookList+"이라는 책이 추가되었습니다.");
+        System.out.println(bookList + "다음과 같은 책이 추가되었습니다.");
     }
 
     public void deleteBook(int index) {
@@ -36,7 +36,14 @@ public class BookManager {
     }
 
     public int searchBook(String title) {
-        return 0;
+        for (int i = 0; i < bookList.size(); i++) {
+            BookDTO book = bookList.get(i);
+            if (book.getTitle().equals(title)) {
+                System.out.println(book);
+                return i; // 찾은 책의 인덱스 반환
+            }
+        }
+        return -1; // 책을 찾지 못한 경우 -1 반환
     }
 
 
@@ -44,6 +51,7 @@ public class BookManager {
 
         if (index >= 0 && index < bookList.size()) {
             BookDTO book = bookList.get(index);
+            System.out.println("책 번호 : " + book.getbNo());
             System.out.println("카테고리 번호 : " + book.getCategory());
             System.out.println("제목 : " + book.getTitle());
             System.out.println("저자 : " + book.getAuthor());
@@ -59,26 +67,15 @@ public class BookManager {
             System.out.println("도서 목록이 비어 있습니다.");
             return;
         }
-
         System.out.println("도서 목록 : ");
         for (BookDTO book : bookList) {
             System.out.println(book);
         }
-
     }
 
     public ArrayList<BookDTO> sortedBookList(int select) {
 
-
-        Collections.sort(bookList, new Comparator<BookDTO>() {
-            @Override
-            public int compare(BookDTO book1, BookDTO book2) {
-                return book1.getCategory() - book2.getCategory();
-            }
-        });
-
-        return bookList;
-
+        return null;
     }
 
     public void printBookList(ArrayList<BookDTO> br) {
